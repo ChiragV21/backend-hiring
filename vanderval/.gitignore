@@ -1,0 +1,55 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Django migrations
+migrations/
+
+# Django log files
+*.log
+
+# SQLite database
+db.sqlite3
+
+# User-uploaded files
+media/
+
+# Static files
+static/
+
+# Virtual environment
+venv/
+.env/
+almabase-venv
+# Celery files
+celerybeat-schedule
+celerybeat.pid
+
+# Python environment files
+.env
+*.env
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+
+# PyCharm project settings
+.idea/
+
+# MySQL or PostgreSQL database config files
+*.sql
+*.db
+
+# Coverage reports
+.coverage
+*.coveragerc
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# VSCode settings folder
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
