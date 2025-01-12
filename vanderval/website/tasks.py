@@ -22,8 +22,8 @@ def execute_task(task_type, site_id):
         "task_01": 0.001,
         "task_02": 0.01,
         "task_03": 0.1,
-        "task_04": 10,
-        "task_05": 60,  
+        "task_04": 1,
+        "task_05": 10,  
     }
 
     time_multiplier = TASK_MULTIPLIERS.get(task_type)
