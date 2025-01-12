@@ -9,10 +9,6 @@ logger = logging.getLogger(__name__)
 from celery import shared_task
 
 @shared_task
-def example_task():
-    print("Example task executed!")
-
-@shared_task
 def execute_task(task_type, site_id):
     if not task_type or not site_id:
         logger.error("Error: site_id and task_type are required")
