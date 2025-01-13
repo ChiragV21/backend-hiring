@@ -20,7 +20,10 @@ class JobExecutionView(APIView):
         try:
             site = Site.objects.get(id=site_id)
         except Site.DoesNotExist:
-            return Response({"error": f"Site with id {site_id} does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(
+                {"error": "Site with id {} does not exist".format(site_id)},
+                status=status.HTTP_404_NOT_FOUND
+            )
 
         # Save job execution request
         job = JobExecution.objects.create(
@@ -30,13 +33,18 @@ class JobExecutionView(APIView):
         )
 
         # Log the request
-        logger.info(f"Job execution request saved: task_type={task_type}, site_id={site_id}")
+        logger.info("Job execution request saved: task_type={}, site_id={}".format(task_type, site_id))
 
         # Trigger the asynchronous task
         execute_task.delay(task_type, site_id)
 
-        return Response({"message": f"Task {task_type} scheduled for site {site_id}", "job_id": job.id}, status=status.HTTP_202_ACCEPTED)
-
+        return Response(
+            {
+                "message": "Task {} scheduled for site {}".format(task_type, site_id),
+                "job_id": job.id
+            },
+            status=status.HTTP_202_ACCEPTED
+        )
 
 class SiteListView(APIView):
     def get(self, request, *args, **kwargs):
